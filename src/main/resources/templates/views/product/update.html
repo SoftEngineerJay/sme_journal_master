@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+<head>
+    <include th:replace="views/components/metas :: metas"></include>
+    <include th:replace="views/components/styles :: styles"></include>
+
+    <!--form-rounded-->
+    <link rel="stylesheet" th:href="@{../../vendors/assets/stylerounded.css}">
+    <link rel="stylesheet" th:href="@{../../vendors/css/animate.min.css}">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- navbar -->
+    <include th:replace="views/components/navbar :: navbar"></include>
+    <!-- sidebar -->
+    <!-- start aside container -->
+    <aside class="main-sidebar sidebar-dark-lightblue elevation-4">
+        <!-- Brand Logo -->
+        <a href="" class="brand-link">
+            <span class="brand-text font-weight-light">
+                <h6 align="center"><small>SME Journal</small></h6>
+            </span>
+        </a>
+
+        <!-- start sidebar -->
+        <div class="sidebar">
+
+            <!-- start user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="../../vendors/assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">Welcome!</a>
+                </div>
+            </div>
+            <!-- end user panel (optional) -->
+
+            <!-- start navbar -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item has-treeview">
+                        <a href="/dashboard" class="nav-link">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/employees" class="nav-link">
+                            <i class="nav-icon fas fa-address-card"></i>
+                            <p>Employees</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/product" class="nav-link active">
+                            <i class="nav-icon fas fa-th-list"></i>
+                            <p>Product</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/partners" class="nav-link">
+                            <i class="nav-icon fas fa-address-book"></i>
+                            <p>Partners</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link menu-open">
+                            <i class="nav-icon fas fa-cog"></i>
+                            <p>Encoding
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/brand" class="nav-link">
+                                    <i class="fa fa-file nav-icon"></i>
+                                    <p>Brand</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/category" class="nav-link ">
+                                    <i class="fa fa-file-alt nav-icon"></i>
+                                    <p>Category</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/customer" class="nav-link">
+                                    <i class="fa fa-users nav-icon"></i>
+                                    <p>Customers</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa-globe"></i>
+                            <p>Global
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/countries" class="nav-link">
+                                    <i class="fa fa-file nav-icon"></i>
+                                    <p>Countries</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/states" class="nav-link">
+                                    <i class="fa fa-file-alt nav-icon"></i>
+                                    <p>States</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/locations" class="nav-link ">
+                                    <i class="fa fa-users nav-icon"></i>
+                                    <p>Locations</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            <i class="nav-icon fa fa-power-off"></i>
+                            <p>
+                                Logout
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- end navbar -->
+        </div>
+        <!-- end sidebar -->
+    </aside>
+    <!-- end aside container -->
+
+    <!-- content wrapper -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6 animated bounceInRight">
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Product</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content Header (Page header) -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card card-outline card-lightblue">
+                    <div class="card-header">
+                        <h5><i class="fa fa-plus"></i> Update Product Information</h5>
+                    </div>
+
+                    <form th:action="@{/update-product}" th:object="${products}" enctype="multipart/form-data" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="row">
+
+                                        <div class="form-group">
+                                            <!-- Add hidden form field to handle update -->
+                                            <input th:field="*{id}" type="hidden"  class="form-control" id="txtId"/>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Item Code:</label>
+                                                <input th:field="*{itemCode}" type="text" class="form-control" placeholder="Enter Item Code" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Item Name:</label>
+                                                <input th:field="*{itemName}" type="text" class="form-control" placeholder="Item Name" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Serial Code:</label>
+                                                <input th:field="*{serialCode}" type="text" class="form-control" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Date Encode:</label>
+                                                <input th:field="*{dateEncode}" type="date" class="form-control" name="dateEncode" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Brand:</label>
+                                                <select class="form-control form-rounded" name="brand">
+                                                    <option th:each="row:${product}" th:text="${row.brand}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="categoryAdd" class="col-form-label">Category</label>
+                                                <select class="form-control form-rounded" id="categoryAdd" name="category">
+                                                    <option th:each="row:${product}" th:text="${row.category}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">City :</label>
+                                                <input th:field="*{city}" type="text" id="cityAdd" name="city" class="form-control" placeholder="city" required="required">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <textarea th:field="*{address}" id="addressAdd" class="form-control" name="address" required></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn bg-purple">
+                                <i class="fa fa-save"></i> Submit
+                            </button>
+                            <a href="/product" class="btn btn-outline-danger btn-rounded">
+                                <i class="fa fa-times"></i> Close
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- end Main content -->
+
+
+    </div>
+    <!-- end content wrapper -->
+
+
+</div>
+    <include th:replace="views/components/scripts :: scripts"></include>
+
+</body>
+</html>

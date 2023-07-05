@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+<head>
+    <include th:replace="views/components/metas :: metas"></include>
+    <include th:replace="views/components/styles :: styles"></include>
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- navbar -->
+    <include th:replace="views/components/navbar :: navbar"></include>
+
+    <!-- sidebar -->
+    <!-- start aside container -->
+    <aside class="main-sidebar sidebar-dark-lightblue elevation-4">
+        <!-- Brand Logo -->
+        <a href="" class="brand-link">
+            <span class="brand-text font-weight-light">
+                <h6 align="center"><small>SME Journal</small></h6>
+            </span>
+        </a>
+
+        <!-- start sidebar -->
+        <div class="sidebar">
+
+            <!-- start user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="../../vendors/assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">Welcome!</a>
+                </div>
+            </div>
+            <!-- end user panel (optional) -->
+
+            <!-- start navbar -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item has-treeview">
+                        <a href="/dashboard" class="nav-link">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/employees" class="nav-link">
+                            <i class="nav-icon fas fa-address-card"></i>
+                            <p>Employees</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/product" class="nav-link">
+                            <i class="nav-icon fas fa-th-list"></i>
+                            <p>Product</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/partners" class="nav-link">
+                            <i class="nav-icon fas fa-address-book"></i>
+                            <p>Partners</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-cog"></i>
+                            <p>Encoding
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/brand" class="nav-link">
+                                    <i class="fa fa-file nav-icon"></i>
+                                    <p>Brand</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/category" class="nav-link ">
+                                    <i class="fa fa-file-alt nav-icon"></i>
+                                    <p>Category</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/customer" class="nav-link ">
+                                    <i class="fa fa-users nav-icon"></i>
+                                    <p>Customers</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-globe"></i>
+                            <p>Global
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/countries" class="nav-link">
+                                    <i class="fa fa-file nav-icon"></i>
+                                    <p>Countries</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/states" class="nav-link active">
+                                    <i class="fa fa-file-alt nav-icon"></i>
+                                    <p>States</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/locations" class="nav-link ">
+                                    <i class="fa fa-users nav-icon"></i>
+                                    <p>Locations</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            <i class="nav-icon fa fa-power-off"></i>
+                            <p>
+                                Logout
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- end navbar -->
+        </div>
+        <!-- end sidebar -->
+    </aside>
+    <!-- end aside container -->
+
+    <!-- content wrapper -->
+    <div class="content-wrapper">
+
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <a data-toggle="modal" data-target="#addModal" class="btn bg-purple"><i class="fas fa-plus-square"></i> Add Location</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Location</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content Header (Page header) -->
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!--contain table-->
+            <div class="section-body mt-3">
+                <div class="container-fluid">
+                    <div class="row-clearfix">
+                        <div class="col-lg-12">
+                            <div class="card card-purple card-outline">
+                                <div class="card-body">
+                                    <div class="box box-primary">
+                                        <div class="box-body">
+                                            <table class="table table-bordered table-hover text-center" width="100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>City</th>
+                                                    <th>Address</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <div th:if="${not #lists.isEmpty(locations)}">
+                                                    <tr th:each="row:${locations}">
+                                                        <td th:text="${row.id}"></td>
+                                                        <td th:text="${row.city}"></td>
+                                                        <td th:text="${row.address}"></td>
+                                                        <td>
+                                                            <div class="btn-group btn-group-sm">
+                                                                <a th:href="@{/locations/findById/(id=${row.id})}"
+                                                                   id="editButton" data-toggle="modal"
+                                                                   data-target="#editModal"
+                                                                   class="btn bg-purple btn-xs"><i
+                                                                        class="fa fa-pencil-alt"></i>
+                                                                </a>
+
+                                                                <a th:href="@{/locations/delete/(id=${row.id})}"
+                                                                   data-toggle="modal" data-target="#deleteModal"
+                                                                   id="deleteButton" style="margin-left: 5px"
+                                                                   class="btn bg-red btn-xs"><i
+                                                                        class="fas fa-trash"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </div>
+                                                <div th:if="${not #lists.isEmpty(locations)}">
+                                                    <tr>
+                                                        <td>No Location exists!</td>
+                                                    </tr>
+                                                </div>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end contain table-->
+
+
+            <!-- delete modal -->
+            <div id="deleteModal" class="modal fade delete-modal animated rubberBand" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <img src="../../../vendors//assets/img/sent.png" alt="" width="50" height="46">
+                            <h3>Are you sure want to delete this Records?</h3>
+                            <div class="m-t-20">
+                                <a type="#" class="btn btn-close" data-dismiss="modal"><i class="fa fa-times"></i> Close</a>
+                                <a type="submit" class="btn btn-danger" id="delRef" onclick="deleteItem()"><i
+                                        class="fa fa-trash"></i>Delete</a>
+                                <input type="hidden" name="id">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end pop up delete-->
+
+
+            <!--ADD MODAL-->
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <form th:action="@{/locations/addNew}" method="post">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">New State Record</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="idAdd" class="col-form-label">Id:</label>
+                                    <input type="text" class="form-control" id="idAdd" name="id" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="descriptionEdit" class="col-form-label">Description:</label>
+                                    <input type="text" class="form-control" id="descriptionAdd" name="description" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cityAdd" class="col-form-label">City:</label>
+                                    <input type="text" class="form-control" id="cityAdd" name="city" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="detailsAdd" class="col-form-label">Address:</label>
+                                    <textarea type="text" class="form-control" id="addressAdd" name="address"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ddlCountryAdd" class="col-form-label">Country: </label>
+                                    <select class="form-control" id="ddlCountryAdd" name="countryId">
+                                        <option>-SELECT-</option>
+                                        <option th:each="country:${countries}"
+                                                th:value="${country.id}"
+                                                th:text="${country.description}">
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ddlStateAdd" class="col-form-label">State: </label>
+                                    <select class="form-control" id="ddlStateAdd" name="stateId">
+                                        <option>-SELECT-</option>
+                                        <option th:each="state:${states}"
+                                                th:value="${state.id}"
+                                                th:text="${state.name}">
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="detailsAdd" class="col-form-label">Details:</label>
+                                    <input type="text" class="form-control" id="detailsAdd" name="details">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn bg-purple">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!--EDIT MODAL-->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <form th:action="@{/states/update}" method="put">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edit State Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="idEdit" class="col-form-label">Id:</label>
+                                    <input type="text" class="form-control" id="idEdit" name="id" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="descriptionEdit" class="col-form-label">Description:</label>
+                                    <input type="text" class="form-control" id="descriptionEdit" name="description" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="codeEdit" class="col-form-label">Code:</label>
+                                    <input type="text" class="form-control" id="codeEdit" name="code">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn bg-purple">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+        <!--end main content-->
+
+    </div>
+    <!-- end content wrapper -->
+
+</div>
+
+<include th:replace="views/components/scripts :: scripts"></include>
+
+
+<!--delete modal-->
+<script>
+    /** Delete Modal **/
+    $('document').ready(function () {
+        /** DELETE MODAL **/
+        $('.table #deleteButton').on('click', function (event) {
+            event.preventDefault();
+            var href = $(this).attr('href');
+            $('#deleteModal #delRef').attr('href', href);
+            $('#deleteModal').modal();
+        });
+    });
+
+    /**UPDATE MODAL**/
+    $('table #editButton').on('click',function(event){
+        event.preventDefault();
+
+        var href = $(this).attr('href');
+
+        $.get(href, function(location, status){
+            $('#idEdit').val(location.id);
+            $('#cityEdit').val(location.city);
+            $('#addressEdit').val(location.address);
+            $('#ddlStateEdit').val(location.stateId);
+            $('#ddlCountryEdit').val(location.countryId);
+            $('#descriptionEdit').val(location.description);
+            $('#detailsEdit').val(location.details);
+        });
+        $('#editModal').modal();
+    });
+</script>
+
+</body>
+</html>

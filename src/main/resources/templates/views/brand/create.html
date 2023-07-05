@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <include th:replace="views/components/metas :: metas"></include>
+    <include th:replace="views/components/styles :: styles"></include>
+
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+
+    <div class="card">
+
+            <div class="card card-purple">
+                <div class="card-header">
+                    <h3 class="card-title">Brand</h3>
+                </div>
+                <form action="#" th:action="@{/save}" th:object="${brands}" enctype="multipart/form-data" method="post">
+                    <div class="card-body">
+
+                            <div class="col-md-12">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Brand Name:</label>
+                                            <input type="text" th:field="*{brandName}" class="form-control" placeholder="Enter the Brand"/>
+                                            <span th:if="${#fields.hasErrors('brandName')}" th:errors="*{brandName}"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Description</label>
+                                            <textarea th:field="*{description}" class="form-control" name="description"></textarea>
+                                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn bg-purple btn-rounded example3">
+                            <i class="fa fa-save"></i> Submit
+                        </button>
+
+                        <a th:href="@{/brand}" id="my-btn" class="btn btn-outline-danger btn-rounded">
+                            <i class="fa fa-times"></i> Cancel
+                        </a>
+                    </div>
+
+                </form>
+<!--                <div th:switch="${#messages}">-->
+<!--                    <div th:case="'Success'" class="alert alert-success">-->
+<!--                        <strong>Success!</strong> Operation performed successfully.-->
+<!--                    </div>-->
+<!--                    <div th:case="'Failed'" class="alert alert-danger">-->
+<!--                        <strong>Failure!</strong> Operation failed. Please try again-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+
+    </div>
+</div>
+<include th:replace="views/components/scripts :: scripts"></include>
+
+<!-- jquery required -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- the jquery.preloaders plugin -->
+<script src="jquery.preloaders.js"></script>
+
+<script>
+    $(function(){
+
+        // Basic example
+        $('.example1').click(function(){
+
+            $.preloader.start();
+
+            setTimeout(function(){
+                $.preloader.stop();
+            }, 3000);
+
+        });
+
+        // Advanced example
+        $('.example2').click(function(){
+
+            $.preloader.start({
+                modal: true,
+                position:'top-right',   // position (default:'center'): ['center' | 'top-left' | 'top-right' | ' bottom-left' | 'bottom-right' | {top:'200px', left:'200px'}]
+            });
+
+            setTimeout(function(){
+                $.preloader.stop();
+            }, 3000);
+
+        });
+
+        // With button example
+        $('.example3').click(function(){
+
+            var e = $('<div/>').css({'margin-left': '10px', 'display': 'inline-block', 'vertical-align': 'middle'}).insertAfter(this).preloader({src:'sprites.32.png'});
+
+            setTimeout(function(){
+                e.preloader('stop');
+            }, 3000);
+
+        });
+
+    });
+</script>
+</body>
+</html>

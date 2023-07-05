@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+<head>
+    <include th:replace="views/components/metas :: metas"></include>
+    <include th:replace="views/components/styles :: styles"></include>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- navbar -->
+    <include th:replace="views/components/navbar :: navbar"></include>
+    <!-- start aside container -->
+    <aside class="main-sidebar sidebar-dark-lightblue elevation-4">
+        <!-- Brand Logo -->
+        <a href="" class="brand-link">
+            <span class="brand-text font-weight-light">
+                <h6 align="center"><small>SME Journal</small></h6>
+            </span>
+        </a>
+
+        <!-- start sidebar -->
+        <div class="sidebar">
+
+            <!-- start user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="../../vendors/assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">Welcome!</a>
+                </div>
+            </div>
+            <!-- end user panel (optional) -->
+
+            <!-- start navbar -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item has-treeview">
+                        <a href="/dashboard" class="nav-link">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/employees" class="nav-link">
+                            <i class="nav-icon fas fa-address-card"></i>
+                            <p>Employees</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/product" class="nav-link">
+                            <i class="nav-icon fas fa-th-list"></i>
+                            <p>Product</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/partners" class="nav-link active">
+                            <i class="nav-icon fas fa-address-book"></i>
+                            <p>Partners</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-globe"></i>
+                            <p>Encoding
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/brand" class="nav-link">
+                                    <i class="fa fa-file nav-icon"></i>
+                                    <p>Brand</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/category" class="nav-link ">
+                                    <i class="fa fa-file-alt nav-icon"></i>
+                                    <p>Category</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/customer" class="nav-link ">
+                                    <i class="fa fa-users nav-icon"></i>
+                                    <p>Customers</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-cog"></i>
+                            <p>Global
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/countries" class="nav-link">
+                                    <i class="fa fa-file nav-icon"></i>
+                                    <p>Countries</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/states" class="nav-link ">
+                                    <i class="fa fa-file-alt nav-icon"></i>
+                                    <p>States</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/locations" class="nav-link ">
+                                    <i class="fa fa-users nav-icon"></i>
+                                    <p>Locations</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            <i class="nav-icon fa fa-power-off"></i>
+                            <p>
+                                Logout
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- end navbar -->
+        </div>
+        <!-- end sidebar -->
+    </aside>
+    <!-- end aside container -->
+
+
+    <!-- content wrapper -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Partner</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content Header (Page header) -->
+
+        <!-- start main section content -->
+        <section>
+            <div class="container-fluid">
+                <div class="card card-outline card-lightblue">
+                    <div class="card-header">
+                        <h5><i class="fa fa-plus"></i>Update Partner Information</h5>
+                    </div>
+
+                    <form th:action="@{/save-partner}" th:object="${partners}" enctype="multipart/form-data" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="row">
+
+                                        <div class="form-group">
+                                            <!-- Add hidden form field to handle update -->
+                                            <input th:field="*{id}" type="hidden"  class="form-control" id="txtId"/>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Company Name:</label>
+                                                <input th:field="*{companyName}" type="text" class="form-control" placeholder="Company Name"/>
+                                                <span class="help-block" th:if="${#fields.hasErrors('companyName')}" th:errors="*{companyName}">Company Name Error</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Company Webpage:</label>
+                                                <input th:field="*{companyWebpage}" type="text" class="form-control" placeholder="Company Webpage">
+                                                <span class="help-block" th:if="${#fields.hasErrors('companyWebpage')}" th:errors="*{companyWebpage}">Company Webpage Error</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Number Of Employees:</label>
+                                                <input th:field="*{numberOfEmployees}" type="text" class="form-control" placeholder="Number of Employees" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('numberOfEmployees')}" th:errors="*{numberOfEmployees}">Number of Employees Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Number Of Customers:</label>
+                                                <input th:field="*{numberOfCustomers}" type="text" class="form-control" placeholder="Number of Customers" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('numberOfCustomers')}" th:errors="*{numberOfCustomers}">Number of Customers Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Company Address:</label>
+                                                <input th:field="*{companyAddress}" type="text" class="form-control" placeholder="Company Address" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('companyAddress')}" th:errors="*{companyAddress}">Company Address Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Street Address:</label>
+                                                <input th:field="*{streetAddress}" type="text" class="form-control" placeholder="Street Address" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('streetAddress')}" th:errors="*{streetAddress}">Street Address Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Street Address Line 2:</label>
+                                                <input th:field="*{streetAddressLine2}" type="text" class="form-control" placeholder="Street Address Line 2" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('streetAddressLine2')}" th:errors="*{streetAddressLine2}">Street Address Line 2 Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">State / Province :</label>
+                                                <input th:field="*{stateProvince}" type="text" class="form-control" placeholder="State / Province" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('stateProvince')}" th:errors="*{stateProvince}">State / Province Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Postal / Zipcode :</label>
+                                                <input th:field="*{postalZipcode}" type="text" class="form-control" placeholder="Postal / Zipcode" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('postalZipcode')}" th:errors="*{postalZipcode}">Postal / Zipcode Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">City :</label>
+                                                <input th:field="*{city}" type="text" class="form-control" placeholder="City" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Activities :</label>
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Social Media"/> Social Media
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Website Optimization"/> Website Optimization
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Media Advertisement"/> Media Advertisement
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Email/Mobile Marketing"/> Email/Mobile Marketing
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Trade Show/Workshop"/> Trade Show/Workshop
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Trade Show/Workshop"/> Trade Show/Workshop
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Paid Search/SEO"/> Paid Search/SEO
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Direct Mailer"/> Direct Mailer
+                                                <input th:field="*{activities}" type="radio" class="form-check-inline" value="Other"/> Other
+                                                <span class="help-block" th:if="${#fields.hasErrors('activities')}" th:errors="*{activities}">Activities Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Contact :</label>
+                                                <input th:field="*{contact}" type="number" class="form-control" placeholder="Contact" required>
+                                                <span class="help-block" th:if="${#fields.hasErrors('contact')}" th:errors="*{city}">Contact Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Email:</label>
+                                                <input th:field="*{email}" type="email" class="form-control" placeholder="ex:myname@example.com" required/>
+                                                <span class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Empty Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Additional Information :</label>
+                                                <textarea th:field="*{additionalInformation}" class="form-control form-rounded" rows="4" cols="50" name="comment" placeholder="Additional Information..." required></textarea>
+                                                <span class="help-block" th:if="${#fields.hasErrors('additionalInformation')}" th:errors="*{additionalInformation}">Additional Information Not Empty</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn bg-purple">
+                                <i class="fa fa-save"></i> Submit
+                            </button>
+                            <a href="/partners" class="btn btn-outline-danger btn-rounded">
+                                <i class="fa fa-times"></i> Close
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+        <!--end main section content-->
+
+    </div>
+    <!--end content wrapper-->
+
+
+</div>
+<include th:replace="views/components/scripts :: scripts"></include>
+</body>
+</html>
